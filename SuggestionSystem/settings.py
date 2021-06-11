@@ -19,7 +19,7 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="D:\Intern\incare-afbg-74d40cdba80a.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=os.getenv('CREDENTIALS_PATH')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-buq9xqc=!u%&r6=6vk^&-q7m^d!9)wzmzp2@a4o_(6&@des%zt'
+SECRET_KEY =os.getenv('SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
