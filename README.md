@@ -54,7 +54,7 @@ python manage.py runserver
 
 ## Usage
 As of now, it has only one end point
-- ***{url}/get_suggestions*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent text in body with the parameter name as note and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
+- ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent text in body with the parameter name as note and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
 </br>
 
 ![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(377).png)
