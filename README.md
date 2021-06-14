@@ -1,5 +1,24 @@
 # SuggestionSystem
+<p align="center">
+  <p align="center">
+    </br>
+    <a href="https://dialogflow.cloud.google.com/#/" target="_blank">
+     <img src="https://upload.wikimedia.org/wikipedia/en/c/c7/Dialogflow_logo.svg"  height="64">
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="https://www.python.org/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"  height="64">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="https://www.djangoproject.com/" target="_blank">
+      <img src="https://static.djangoproject.com/img/logos/django-logo-negative.svg"  height="64">
+    </a>
+  </p>
+</p>
+
+## About
 It's a utility service for suggesting response using DialogFlow for a provided sentence.
+
+## DialogFlow
+Dialogflow is a natural language understanding platform used to design and integrate a conversational user interface into mobile apps, web applications, devices, bots, interactive voice response systems and related uses.
 
 ## Getting Stared
 To get this project up and running you should start by having [Python](https://www.python.org/) installed on your computer. It's advised you create a [virtual environment](https://docs.python.org/3/tutorial/venv.html) to store your projects dependencies separately. You can install virtualenv with
