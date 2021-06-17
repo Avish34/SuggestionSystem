@@ -13,7 +13,7 @@ class DialogFlow:
         self.language_code=language_code
 
     def get_suggestions(self,text):
-        return HttpResponse(self.detect_intent_texts(text))
+        return self.detect_intent_texts(text)
 
     def detect_intent_texts(self,text):
     
@@ -43,7 +43,7 @@ class DialogFlow:
                 )
             suggestions.append(response.query_result.fulfillment_text)
         send={"suggestion":suggestions}
-        return json.dumps(send,indent=4)    
+        return json.dumps(send)    
 
 class TextCleaning():
     def __init__(self,text):
