@@ -5,7 +5,7 @@ import json
 import nltk
 from nltk.tokenize import sent_tokenize
 #nltk.download('punkt') Download once, then comment it!
-
+from cleantext import clean
 class DialogFlow:
     def __init__(self, project_id, session_id,language_code):
         self.project_id=project_id
@@ -15,6 +15,21 @@ class DialogFlow:
     def get_suggestions(self,text):
         return self.detect_intent_texts(text)
 
+    def get_intent(self,text):
+        session_client = dialogflow.SessionsClient()
+
+        session = session_client.session_path(self.project_id, self.session_id)
+        text_input = dialogflow.TextInput(text=text, language_code=self.language_code)
+
+        query_input = dialogflow.QueryInput(text=text_input)
+
+        response = session_client.detect_intent(
+                request={"session": session, "query_input": query_input}
+            )
+
+        print(response.query_result.intent.display_name)
+        return response.query_result.intent.display_name
+    
     def detect_intent_texts(self,text):
     
         session_client = dialogflow.SessionsClient()
@@ -53,6 +68,9 @@ class TextCleaning():
     def to_sentence(self):
         texts=sent_tokenize(self.text)
         return texts
+    def clean_text(self):
+        self.text=clean(self.text,no_phone_numbers=True)  
+        print(self.text)  
     def preprocess_text(self):
         self.remove_extra_spaces()
         return self.to_sentence()  

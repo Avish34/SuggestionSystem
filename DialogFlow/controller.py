@@ -6,22 +6,8 @@ import json,uuid,os
 from .utility import DialogFlow
 from .utility import TextCleaning
 from .models import Suggestion
-def helper(text):
-
-    project_id=os.getenv('PROJECT_ID')
-    session_id=uuid.uuid1()
-    language_code="en-US"
-    dialog_flow=DialogFlow(project_id,session_id,language_code)
-    cleaned_text=TextCleaning(text)
-    texts=cleaned_text.preprocess_text()
-    value=dialog_flow.get_suggestions(texts)
-    obj=Suggestion(Text=text,Suggestions=value)
-    obj.save()
-    print(obj.Suggestions)
-    return HttpResponse(value)
-
-
-
+from .handler import helper
+from .handler import accuracy
 
 def get_suggestion(request):
     
@@ -34,5 +20,18 @@ def get_suggestion(request):
         return helper(text)  
          
     return HttpResponse(status=405)
+
+
+def get_accuracy(request):
+    if(request.method=='GET'):
+        request_body = request.body.decode('utf-8')
+        obj=json.loads(request_body)
+        texts=obj['notes']
+        if(len(texts)==0):
+            return HttpResponse(status=400)
+        return HttpResponse(accuracy(texts))
+         
+    return HttpResponse(status=405)
+
 
     
