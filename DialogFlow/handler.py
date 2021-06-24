@@ -1,3 +1,4 @@
+from bs4.builder import HTML, HTML_5
 from django import http
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, response
@@ -9,16 +10,23 @@ from .utility import DialogFlow
 from .utility import TextCleaning
 from .models import Suggestion
 from .manager import SaveText
-
+from bs4 import BeautifulSoup
 def set_value():
     project_id=os.getenv('PROJECT_ID')
     session_id=uuid.uuid1()
     language_code="en-US"
     return project_id,session_id,language_code
 
+def santizie_notes(text):
+    soup = BeautifulSoup(text,features="html.parser")
+    text = soup.get_text()
+    print(text)
+    return text
+    
 
 def helper(text):
     project_id,session_id,language_code=set_value()
+    text=santizie_notes(text)
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     cleaned_text=TextCleaning(text)
     texts=cleaned_text.preprocess_text()
@@ -31,6 +39,7 @@ def accuracy(texts):
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     count=0
     for text in texts:
+        text=santizie_notes(text)
         if(text[1]==dialog_flow.get_intent(text[0])):
             count+=1
     return (count/len(texts))*100
