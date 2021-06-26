@@ -11,6 +11,7 @@ from .utility import TextCleaning
 from .models import Suggestion
 from .manager import SaveText
 from bs4 import BeautifulSoup
+
 def set_value():
     project_id=os.getenv('PROJECT_ID')
     session_id=uuid.uuid1()
@@ -39,7 +40,7 @@ def accuracy(texts):
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     count=0
     for text in texts:
-        text=santizie_notes(text)
-        if(text[1]==dialog_flow.get_intent(text[0])):
+        text=santizie_notes(text[0])
+        if(text[1]==dialog_flow.get_intent(text)):
             count+=1
     return (count/len(texts))*100
