@@ -1,4 +1,4 @@
-from bs4.builder import HTML, HTML_5
+from cleantext.clean import clean
 from django import http
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, response
@@ -10,7 +10,7 @@ from .utility import DialogFlow
 from .utility import TextCleaning
 from .models import Suggestion
 from .manager import SaveText
-from bs4 import BeautifulSoup
+
 
 def set_value():
     project_id=os.getenv('PROJECT_ID')
@@ -18,16 +18,10 @@ def set_value():
     language_code="en-US"
     return project_id,session_id,language_code
 
-def santizie_notes(text):
-    soup = BeautifulSoup(text,features="html.parser")
-    text = soup.get_text()
-    print(text)
-    return text
     
 
 def helper(text):
     project_id,session_id,language_code=set_value()
-    text=santizie_notes(text)
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     cleaned_text=TextCleaning(text)
     texts=cleaned_text.preprocess_text()
@@ -39,8 +33,14 @@ def accuracy(texts):
     project_id,session_id,language_code=set_value()
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     count=0
+    cleaned_text=TextCleaning("")
+    total_text=len(texts)
     for text in texts:
-        text=santizie_notes(text[0])
-        if(text[1]==dialog_flow.get_intent(text)):
+        cleaned_text.text=text[0]
+        cleaned_text.santizie_notes()
+        new_text=cleaned_text.text
+        if(text[1]==dialog_flow.get_intent(new_text)):
             count+=1
-    return (count/len(texts))*100
+    model_accuracy=(count/len(texts))*100
+    response_object={"accuracy":model_accuracy,"total":total_text,"matched":count,"mismatched":total_text-count}
+    return json.dumps(response_object)
