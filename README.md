@@ -59,7 +59,15 @@ As of now, it has only one end point
 
 ![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(377).png)
 
-</br> In the above image, we have used Postman for testing API.
+- ***{url}/get_accuracy***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent list of text with their corresponding intents and they will get a [JSON](https://www.json.org/json-en.html) Object as response.
+<br>
+
+![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(388).png)
+
+**Note:** Intents should be created in dialogflow. For creating Intents please follow [this](https://cloud.google.com/dialogflow/es/docs/intents-manage)
+
+
+</br> In the above images, we have used Postman for testing API.
 
 ## Tech Stack
 - [Python](https://www.python.org/)
