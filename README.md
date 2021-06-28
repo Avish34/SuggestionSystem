@@ -18,7 +18,7 @@
 It's a utility service for suggesting response using DialogFlow for a provided sentence.
 
 ## DialogFlow
-Dialogflow is a natural language understanding platform used to design and integrate a conversational user interface into mobile apps, web applications, devices, bots, interactive voice response systems and related uses.
+Dialogflow is a natural language understanding platform used to design and integrate a conversational user interface into mobile apps, web applications, devices, bots, interactive voice response systems and related uses. Learn more about dialog flow from [here](https://cloud.google.com/dialogflow)
 
 ## Getting Stared
 To get this project up and running you should start by having [Python](https://www.python.org/) installed on your computer. It's advised you create a [virtual environment](https://docs.python.org/3/tutorial/venv.html) to store your projects dependencies separately. You can install virtualenv with
