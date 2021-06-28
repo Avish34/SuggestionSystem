@@ -50,10 +50,10 @@ Now you can run the project with this command
 ```
 python manage.py runserver
 ```
-**Note** Project won't start until you provide *SECRET_KEY*, *PROJECT_ID*(Get it from dialog flow project) and *GOOGLE_APPLICATION_CREDENTIALS* (Get it from creating service account in google cloud console).
+**Note** Project won't start until you provide *SECRET_KEY*, *PROJECT_ID*(Refer [this](https://support.google.com/googleapi/answer/7014113?hl=en)) and *GOOGLE_APPLICATION_CREDENTIALS* (Refer [this](https://cloud.google.com/docs/authentication/getting-started)).
 
 ## Usage
-Given below are some endpoints.
+Given below are endpoints.
 
 - ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent text in body with the parameter name as note and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
 </br>
