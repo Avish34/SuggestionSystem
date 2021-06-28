@@ -53,7 +53,8 @@ python manage.py runserver
 **Note** Project won't start until you provide *SECRET_KEY*, *PROJECT_ID*(Get it from dialog flow project) and *GOOGLE_APPLICATION_CREDENTIALS* (Get it from creating service account in google cloud console).
 
 ## Usage
-As of now, it has only one end point
+Given below are some endpoints.
+
 - ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent text in body with the parameter name as note and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
 </br>
 
