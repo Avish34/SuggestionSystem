@@ -2,7 +2,10 @@ from urllib import request
 from google.cloud import dialogflow
 from django.http import HttpResponse, JsonResponse, response
 import json
+from bs4.builder import HTML, HTML_5
+from bs4 import BeautifulSoup
 import nltk
+from nltk import text
 from nltk.tokenize import sent_tokenize
 #nltk.download('punkt') Download once, then comment it!
 from cleantext import clean
@@ -63,16 +66,27 @@ class DialogFlow:
 class TextCleaning():
     def __init__(self,text):
         self.text=text
+
     def remove_extra_spaces(self):
         self.text=" ".join(self.text.split()) 
+
     def to_sentence(self):
         texts=sent_tokenize(self.text)
         return texts
+
     def clean_text(self):
         self.text=clean(self.text,no_phone_numbers=True)  
         print(self.text)  
+
     def preprocess_text(self):
         self.remove_extra_spaces()
+        self.text=self.santizie_notes()
         return self.to_sentence()  
+
+    def santizie_notes(self):
+        soup = BeautifulSoup(self.text,features="html.parser")
+        text = soup.get_text()
+        print(text)
+        return text    
 
           
