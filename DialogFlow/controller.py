@@ -9,6 +9,8 @@ from .models import Suggestion
 from .handler import helper
 from .handler import accuracy
 
+
+
 def get_suggestion(request):
     
     if(request.method=='GET'):
@@ -21,7 +23,9 @@ def get_suggestion(request):
          
     return HttpResponse(status=405)
 
-
+'''
+get_accuracy function handles the request for accuracy.
+'''
 def get_accuracy(request):
     if(request.method=='GET'):
         request_body = request.body.decode('utf-8')

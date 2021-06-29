@@ -11,7 +11,9 @@ from .utility import TextCleaning
 from .models import Suggestion
 from .manager import SaveText
 
-
+'''
+set_value function set the values of parameter needed for dialogflow object
+'''
 def set_value():
     project_id=os.getenv('PROJECT_ID')
     session_id=uuid.uuid1()
@@ -19,7 +21,11 @@ def set_value():
     return project_id,session_id,language_code
 
     
+'''
+helper function is used by get_suggestion to handle the request. 
+It retunrs suggestion for the text provieded in argument.
 
+'''
 def helper(text):
     project_id,session_id,language_code=set_value()
     dialog_flow=DialogFlow(project_id,session_id,language_code)
@@ -28,6 +34,11 @@ def helper(text):
     value=dialog_flow.get_suggestions(texts)
     SaveText(text,value)
     return HttpResponse(value)
+
+'''
+accuracy function accepts list text as argument and returns accuracy of the model 
+based on list of text given.
+'''
 
 def accuracy(texts):
     project_id,session_id,language_code=set_value()
