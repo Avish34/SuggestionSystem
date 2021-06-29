@@ -70,6 +70,9 @@ Given below are endpoints.
 
 </br> In the above images, we have used Postman for testing API.
 
+## API Collection
+You can Download API Collection from [here](https://github.com/Avish34/Playgroung/blob/master/InCare.postman_collection.json). To Import in your local desktop, Please follow [this](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
+
 ## Tech Stack
 - [Python](https://www.python.org/)
 - [Django](https://www.djangoproject.com/)
