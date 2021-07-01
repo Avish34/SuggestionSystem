@@ -9,7 +9,10 @@ from google.cloud.dialogflow_v2.types import session
 from .utility import DialogFlow
 from .utility import TextCleaning
 from .models import Suggestion
-from .manager import SaveText
+from .manager import SaveText,save_in_accuracy
+import pandas as pd
+import csv
+from .models import accuracy_db 
 
 '''
 set_value function set the values of parameter needed for dialogflow object
@@ -40,18 +43,31 @@ accuracy function accepts list text as argument and returns accuracy of the mode
 based on list of text given.
 '''
 
-def accuracy(texts):
+def accuracy():
     project_id,session_id,language_code=set_value()
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     count=0
-    cleaned_text=TextCleaning("")
-    total_text=len(texts)
-    for text in texts:
-        cleaned_text.text=text[0]
-        cleaned_text.santizie_notes()
-        new_text=cleaned_text.text
-        if(text[1]==dialog_flow.get_intent(new_text)):
+    len=0
+    obj=accuracy_db.objects.filter()
+    for text in obj.iterator():
+        if(text.Intent==dialog_flow.get_intent(text.Text)):
             count+=1
-    model_accuracy=(count/len(texts))*100
-    response_object={"accuracy":model_accuracy,"total":total_text,"matched":count,"mismatched":total_text-count}
+        len+=1    
+        
+    model_accuracy=(count/len)*100
+    response_object={"accuracy":model_accuracy,"total":len,"matched":count,"mismatched":len-count}
     return json.dumps(response_object)
+
+
+
+def parse_file(file):
+    decoded_file = file.read().decode('utf-8-sig').splitlines()
+    reader = csv.DictReader(decoded_file)
+    cleaned_text=TextCleaning("")
+    for row in reader:
+        cleaned_text.text=row['Text']
+        cleaned_text.santizie_notes()
+        save_in_accuracy(row['Patient_id'],cleaned_text.text,row['Intent'])
+
+    
+       

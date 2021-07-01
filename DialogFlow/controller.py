@@ -6,9 +6,7 @@ import json,uuid,os
 from .utility import DialogFlow
 from .utility import TextCleaning
 from .models import Suggestion
-from .handler import helper
-from .handler import accuracy
-
+from .handler import helper,accuracy,parse_file
 
 
 def get_suggestion(request):
@@ -28,14 +26,13 @@ get_accuracy function handles the request for accuracy.
 '''
 def get_accuracy(request):
     if(request.method=='GET'):
-        request_body = request.body.decode('utf-8')
-        obj=json.loads(request_body)
-        texts=obj['notes']
-        if(len(texts)==0):
-            return HttpResponse(status=400)
-        return HttpResponse(accuracy(texts))
+        return HttpResponse(accuracy())
          
     return HttpResponse(status=405)
 
+@csrf_exempt
+def update_collection(request):
+    upload = request.FILES['file']
+    parse_file(upload)
+    return HttpResponse('ok')
 
-    
