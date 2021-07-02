@@ -14,6 +14,13 @@ import pandas as pd
 import csv
 from .models import accuracy_db 
 
+
+def get_queryset(patient_id=-1):
+    if(patient_id==-1):
+         return accuracy_db.objects.filter()
+    return accuracy_db.objects.filter(Patient_id=patient_id)     
+
+
 '''
 set_value function set the values of parameter needed for dialogflow object
 '''
@@ -43,12 +50,12 @@ accuracy function accepts list text as argument and returns accuracy of the mode
 based on list of text given.
 '''
 
-def accuracy():
+def accuracy(patient_id=-1):
     project_id,session_id,language_code=set_value()
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     count=0
     len=0
-    obj=accuracy_db.objects.filter()
+    obj=get_queryset(patient_id)
     for text in obj.iterator():
         if(text.Intent==dialog_flow.get_intent(text.Text)):
             count+=1

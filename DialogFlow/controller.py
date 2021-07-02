@@ -36,3 +36,10 @@ def update_collection(request):
     parse_file(upload)
     return HttpResponse('ok')
 
+def get_accuracy_patient(request):
+    if(request.method=='GET'):
+        return HttpResponse(accuracy(request.GET.get('id')))
+         
+    return HttpResponse(status=405)
+
+
