@@ -55,7 +55,8 @@ python manage.py runserver
 ## Usage
 Given below are endpoints.
 
-- ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed.This API can be used for getting a suggestion against a text. User should sent  patient_id,note_id,note in body and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
+- ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed.This API can be used for getting a suggestion against a text. User should sent  patient_id,note_id,note in body and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading.
+
 </br>
 
 ![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(398).png)
@@ -65,7 +66,7 @@ Given below are endpoints.
 
 ![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(390).png)
 
-**Note:** Intents should be created in dialogflow. For creating Intents please follow [this](https://cloud.google.com/dialogflow/es/docs/intents-manage)
+**Note:** Intents should be created in dialogflow. For creating Intents please follow [this].(https://cloud.google.com/dialogflow/es/docs/intents-manage)
 
 - ***{url}/update_collection***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **POST** is allowed.This API updates the collection of paitent notes which is used for finding accuracy. User should sent a CSV file (ref of csv file is added below) in HTTP form-data with key as file. User will get a status code 201 as response.
 
@@ -86,7 +87,7 @@ Given below are endpoints.
 </br> In the above images, we have used Postman for testing API.
 
 ## API Collection
-You can Download API Collection from [here](https://drive.google.com/file/d/1RAfnl-TcyJE2PvSr7iTKw3rgdwGrTr7J/view?usp=sharing). To Import in your local desktop, Please follow [this](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
+You can Download API Collection from [here](https://drive.google.com/file/d/158EVdN5Dvop68WvVii5EuhVOsxz_sqLd/view?usp=sharing). To Import in your local desktop, Please follow [this].(https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
 
 ## Tech Stack
 - [Python](https://www.python.org/)
