@@ -31,7 +31,7 @@ def get_accuracy(request):
 def update_collection(request):
     upload = request.FILES['file']
     parse_file(upload)
-    return HttpResponse('ok')
+    return HttpResponse(status=201)
 
 def get_accuracy_patient(request):
     if(request.method=='GET'):
