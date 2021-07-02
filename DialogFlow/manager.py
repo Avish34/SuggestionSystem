@@ -4,8 +4,8 @@ from .models import accuracy_db
 SaveText function helps to save the data in database by accepting text and 
 response(suggestion) as argument.
 '''
-def SaveText(text,response):
-    obj=Suggestion(Text=text,Suggestions=response)
+def SaveText(Patient_id,Note_id,text,response):
+    obj=Suggestion(Patient_id=Patient_id,Note_id=Note_id,Text=text,Suggestions=response)
     obj.save()
     return
 

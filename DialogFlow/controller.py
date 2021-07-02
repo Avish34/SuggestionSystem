@@ -14,10 +14,7 @@ def get_suggestion(request):
     if(request.method=='GET'):
         request_body = request.body.decode('utf-8')
         obj=json.loads(request_body)
-        text=obj['note']
-        if(len(text)==0):
-            return HttpResponse(status=400)
-        return helper(text)  
+        return helper(obj)  
          
     return HttpResponse(status=405)
 

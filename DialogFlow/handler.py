@@ -36,13 +36,16 @@ helper function is used by get_suggestion to handle the request.
 It retunrs suggestion for the text provieded in argument.
 
 '''
-def helper(text):
+def helper(obj):
     project_id,session_id,language_code=set_value()
+    text=obj['note']
+    Patient_id=obj['patient_id']
+    Note_id=obj['note_id']
     dialog_flow=DialogFlow(project_id,session_id,language_code)
     cleaned_text=TextCleaning(text)
     texts=cleaned_text.preprocess_text()
     value=dialog_flow.get_suggestions(texts)
-    SaveText(text,value)
+    SaveText(Patient_id,Note_id,text,value)
     return HttpResponse(value)
 
 '''
