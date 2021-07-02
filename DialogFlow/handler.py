@@ -15,6 +15,10 @@ import csv
 from .models import accuracy_db 
 
 
+'''
+get_queryset function returns query set from mongodb based on the patient_id. if patient_id is -1
+then we need to get all the data from database.
+'''
 def get_queryset(patient_id=-1):
     if(patient_id==-1):
          return accuracy_db.objects.filter()
@@ -49,8 +53,8 @@ def helper(obj):
     return HttpResponse(value)
 
 '''
-accuracy function accepts list text as argument and returns accuracy of the model 
-based on list of text given.
+accuracy function accepts patient_id as parameter and returns accuracy corresponding to
+the patient_id. if patient_id is -1 then we need to compute accuract for complete data.
 '''
 
 def accuracy(patient_id=-1):
@@ -68,7 +72,10 @@ def accuracy(patient_id=-1):
     response_object={"accuracy":model_accuracy,"total":len,"matched":count,"mismatched":len-count}
     return json.dumps(response_object)
 
-
+'''
+parse_file function takes file as a csv file as argument , parse and cleans the text content . 
+And saves the content of csv file into database.
+'''
 
 def parse_file(file):
     decoded_file = file.read().decode('utf-8-sig').splitlines()
