@@ -66,7 +66,7 @@ Given below are endpoints.
 
 ![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(390).png)
 
-**Note:** Intents should be created in dialogflow. For creating Intents please follow [this].(https://cloud.google.com/dialogflow/es/docs/intents-manage)
+**Note:** Intents should be created in dialogflow. For creating Intents please follow [this](https://cloud.google.com/dialogflow/es/docs/intents-manage).
 
 - ***{url}/update_collection***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **POST** is allowed.This API updates the collection of paitent notes which is used for finding accuracy. User should sent a CSV file (ref of csv file is added below) in HTTP form-data with key as file. User will get a status code 201 as response.
 
@@ -87,7 +87,7 @@ Given below are endpoints.
 </br> In the above images, we have used Postman for testing API.
 
 ## API Collection
-You can Download API Collection from [here](https://drive.google.com/file/d/158EVdN5Dvop68WvVii5EuhVOsxz_sqLd/view?usp=sharing). To Import in your local desktop, Please follow [this].(https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
+You can Download API Collection from [here](https://drive.google.com/file/d/158EVdN5Dvop68WvVii5EuhVOsxz_sqLd/view?usp=sharing). To Import in your local desktop, Please follow [this](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/).
 
 ## Tech Stack
 - [Python](https://www.python.org/)
