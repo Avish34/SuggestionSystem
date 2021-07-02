@@ -11,7 +11,7 @@ class Suggestion(models.Model):
     Suggestions=models.JSONField()
 
 '''
-Model for saving data for computing accuracy
+Model for saving data for computing accuracy.
 '''
 class accuracy_db(models.Model):
     Patient_id=models.IntegerField()
