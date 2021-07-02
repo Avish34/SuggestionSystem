@@ -55,18 +55,33 @@ python manage.py runserver
 ## Usage
 Given below are endpoints.
 
-- ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent text in body with the parameter name as note and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
+- ***{url}/get_suggestion*** : Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed.This API can be used for getting a suggestion against a text. User should sent  patient_id,note_id,note in body and it will return a [JSON](https://www.json.org/json-en.html) Object as response. Given below an example for better understading
 </br>
 
-![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(377).png)
+![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(398).png)
 
-- ***{url}/get_accuracy***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. User should sent list of text with their corresponding intents and they will get a [JSON](https://www.json.org/json-en.html) Object as response.
+- ***{url}/get_accuracy***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed.This API gets the accuracy of whole model. User will get a [JSON](https://www.json.org/json-en.html) Object as response.
 <br>
 
-![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(388).png)
+![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(390).png)
 
 **Note:** Intents should be created in dialogflow. For creating Intents please follow [this](https://cloud.google.com/dialogflow/es/docs/intents-manage)
 
+- ***{url}/update_collection***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **POST** is allowed.This API updates the collection of paitent notes which is used for finding accuracy. User should sent a CSV file (ref of csv file is added below) in HTTP form-data with key as file. User will get a status code 201 as response.
+
+</br>
+
+![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(392).png)
+
+</br>
+
+![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(394).png)
+
+- ***{url}/get_accuracy/paitent?id={x}***: Only [HTTP Method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) **GET** is allowed. This API get the accuracy of a partituclar patient notes. User should sent paitent id (ex. id=4) in the url and User will get a [JSON](https://www.json.org/json-en.html) Object as response.
+
+</br>
+
+![Image](https://github.com/Avish34/Playgroung/blob/master/Screenshot%20(396).png)
 
 </br> In the above images, we have used Postman for testing API.
 
